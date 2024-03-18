@@ -1,7 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
@@ -13,7 +9,6 @@ fi
 
 alias vim=nvim
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias blender="/Applications/Blender.app/Contents/MacOS/blender"
 alias ls="eza -l"
 alias cat="bat"
 
@@ -32,8 +27,8 @@ export PATH="/Applications/aws-okta.app/Contents/MacOS/:$PATH"
 export POETRY_PATH="$HOME/.local/bin/poetry"
 
 
-if [ -f '/Users/timvancann/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/timvancann/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/timvancann/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/timvancann/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '~/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '~/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '~/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
