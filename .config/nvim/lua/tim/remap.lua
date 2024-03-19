@@ -32,8 +32,6 @@ vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left toggle=true<CR>") 
 
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle) -- open undo tree
 
-vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit) -- open lazygit
-
 vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>") -- open terminal
 
 -- rust
@@ -41,3 +39,7 @@ vim.keymap.set("n", "<leader>rr", ":RustLsp runnables<CR>") -- runnables
 
 
 vim.keymap.set("i", "<Esc>", "<Esc>:w<CR>") -- exit normal mode and save
+
+-- worktree
+vim.keymap.set("n", "<leader>sw", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
+vim.keymap.set("n", "<leader>sW", "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
