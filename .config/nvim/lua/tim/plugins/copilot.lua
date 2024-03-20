@@ -19,22 +19,30 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         opts = {
-            show_help = "yes", -- Show help text for CopilotChatInPlace, default: yes
-            debug = false,    -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
+            show_help = "yes",         -- Show help text for CopilotChatInPlace, default: yes
+            debug = true,              -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
             disable_extra_info = "no", -- Disable extra information (e.g: system prompt) in the response.
-            language = "English", -- Copilot answer language settings when using default prompts. Default language is English.
+            language = "English",      -- Copilot answer language settings when using default prompts. Default language is English.
             -- proxy = "socks5://127.0.0.1:3000", -- Proxies requests via https or socks.
             -- temperature = 0.1,
         },
         dependencies = {
+            { "zbirenbaum/copilot.lua" },
             { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
             { "nvim-lua/plenary.nvim" },
         },
-        build = function()
-            vim.notify("Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim.")
-        end,
         event = "VeryLazy",
         keys = {
+            {
+                "<leader>ccq",
+                function()
+                    local input = vim.fn.input("Quick Chat: ")
+                    if input ~= "" then
+                        require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+                    end
+                end,
+                desc = "CopilotChat - Quick chat",
+            },
             {
                 "<leader>cch",
                 function()
@@ -44,7 +52,7 @@ return {
             },
             -- Show prompts actions with telescope
             {
-                "<leader>ccp",
+                "<leader>cca",
                 function()
                     require("CopilotChat.code_actions").show_prompt_actions()
                 end,
